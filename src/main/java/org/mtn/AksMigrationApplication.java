@@ -57,7 +57,8 @@ public class AksMigrationApplication {
         List<Path> allFiles = fileNames.stream().map(FindAllFilesInFolder::getAllFiles).flatMap(Collection::stream).toList();
         allFiles.forEach(path -> replaceStringInFile(path, currentConfigData));
         allFiles.forEach(AksMigrationApplication::updateSecretFile);
-        allFiles.forEach(AksMigrationApplication::updateDeploymentFile);
+        //This to add the MonogDB ATLAS secrets to deployment file
+        //allFiles.forEach(AksMigrationApplication::updateDeploymentFile);
     }
 
     private static List<String> readFileNames(String dataFile) throws IOException {
